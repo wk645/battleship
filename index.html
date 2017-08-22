@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Roman The Supreme Leaders Glorious Battleship of the Intergalactic Federation</title>
+	<title>Battleship</title>
+	<script src="game.js"></script>
+	<script src="board.js"></script>
 	<script src="index.js"></script>
+
 	<script
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
@@ -15,42 +18,35 @@
 			<h1>Welcome to Battlefield!</h1>
 			<br>
 			<h2><u>How to Play:</u></h2>
-			<p>You have 10 turns to sink your opponent's 3 ships. Click on a button to launch a torpedo. If the button turns red, you have hit one of their ships. If it turns grey, you have missed their ships.</p>
+			<p>You have 10 turns to sink your opponent's ships. Click on a button to launch a torpedo. If the button turns red, you have hit one of their ships. If it turns grey, you have missed their ships.</p>
 			<br>
-			<h3><center>Turns remaining: </h3></center>
-		</div>
 
-		<div id="board"><center>
-			<input type="button" class="btn" id="1">
-			<input type="button" class="btn" id="2">
-			<input type="button" class="btn" id="3">
-			<input type="button" class="btn" id="4">
-			<input type="button" class="btn" id="5">
+
+		<form id="size"><center>
+		<p>Choose a number between 1-10 for the size of your battlefield:</p>
+			<input type="text" id="boardSize" placeholder="board size">
+		</center></form>
 			<br>
-			<input type="button" class="btn" id="6">
-			<input type="button" class="btn" id="7">
-			<input type="button" class="btn" id="8">
-			<input type="button" class="btn" id="9">
-			<input type="button" class="btn" id="10">
+			<center><button id="play">Set Up Board</button></center><br>
+		<form id="shipName"><center>
+			<input type="button" value="add ship" id="makeShip">
+		</center></form>
+		<br>
+		</div>
+		
+		<div id="board">
+			<center><p hidden>Targeting Board</p></center>
+			<center><div id="targetBoard">
+			</center></div>
 			<br>
-			<input type="button" class="btn" id="11">
-			<input type="button" class="btn" id="12">
-			<input type="button" class="btn" id="13">
-			<input type="button" class="btn" id="14">
-			<input type="button" class="btn" id="15">
+
+			<center><u><p>Your Board</p></u></center>
+			<center><div id="userBoard">
+			</div></center>
 			<br>
-			<input type="button" class="btn" id="16">
-			<input type="button" class="btn" id="17">
-			<input type="button" class="btn" id="18">
-			<input type="button" class="btn" id="19">
-			<input type="button" class="btn" id="20">
-			<br>
-			<input type="button" class="btn" id="21">
-			<input type="button" class="btn" id="22">
-			<input type="button" class="btn" id="23">
-			<input type="button" class="btn" id="24">
-			<input type="button" class="btn" id="25">
-		</div></center>
+			<center><button id="start">Save Locations and Start Game</button></center><br>
+
+		</div>
 
 
 
