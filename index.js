@@ -3,10 +3,15 @@ document.addEventListener("DOMContentLoaded", function() {
 	let shipLocation
 	let input
 
+	// let myHeadline = document.getElementById("myBoardHeadline")
+	// myHeadline.style.display = "none"
+
 	let boardDiv = document.getElementById("board")
 	//this is checking to see if any buttons on the board have been clicked and call hit or miss function
 	boardDiv.addEventListener("click", function(event) {
 
+		// let targetId = document.getElementById(`targetingBoard-${i}`)
+		
 		hitOrMiss(shipLocation, event.target.id)
 
 	})
@@ -19,7 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 	playButton.addEventListener("click", function(event) {
 		event.preventDefault()
+		
 		displayUserBoard()
+
 		
 	})
 
@@ -34,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		ship = new Ship
 		renderShips()
 		moveShip(ship)
-		console.log("next")
 		return null
 	})
 
@@ -49,13 +55,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+
 	})
 
 	function displayUserBoard() {
 
 	const userBoard = []
 
-	 input = document.getElementById("boardSize").value
+	input = document.getElementById("boardSize").value
+	// RESTRICT numbers not btn 5-10!!!!!
+
 	// console.log(shipLocation)
 
 		// debugger
@@ -74,8 +83,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		}
 
-		// let targetingBoard = document.getElementById("enemyBoard")
-		// targetingBoard.innerHTML = enemyBoard.join("")
 		let myBoard = document.getElementById("userBoard")
 		myBoard.innerHTML = userBoard.join("")
 
@@ -83,13 +90,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	function displayTargetingBoard() {
 		const targetingBoard = []
-
-	 input = document.getElementById("boardSize").value
+		// debugger
+	 input = parseInt(document.getElementById("boardSize").value)
 	 shipLocation = Math.floor(Math.random() * (input * input)) + 1  
-
-
-		input = document.getElementById("boardSize").value
-		shipLocation = Math.floor(Math.random() * (input * input)) + 1  
 
 		for (i = 1; i <= (input * input); i++) {
 
@@ -105,35 +108,33 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		}
 
-		// let targetingBoard = document.getElementById("enemyBoard")
-		// targetingBoard.innerHTML = enemyBoard.join("")
 		let itsBoard = document.getElementById("targetBoard")
 		itsBoard.innerHTML = targetingBoard.join("")
 
-
 	}
-
 
 	function hitOrMiss(shipLocation, destination) {
 
 		var property = event.target
 
+		let currentLocation = `targetingBoard-${shipLocation}`
+
 		if (event.target.type === "button") {
 
-			if (shipLocation === parseInt(destination)) {
+			if (currentLocation === destination) {
 
 				property.style.backgroundColor = "#ff0000"
+				alert("you sank one of its ships!")
 
 			} else {
 		
-			property.style.backgroundColor = "#0055ff"
+			property.style.backgroundColor = "#636e7f"
 			
 			}
 
 		}
 
 	}
-
 
 	function renderShips () {
 		// debugger
@@ -164,8 +165,12 @@ document.addEventListener("DOMContentLoaded", function() {
 			e.preventDefault()
 		let priorPositions = ship.positions
 
+		// BOUNDARIES!!!!!!!!!!!!!!!!
+		// 
+
 	    switch (e.keyCode) {
 	        case 37: // left
+	        
 	      	turnWhite(priorPositions)
 	          let moveLeft = ship.positions.map(position => position - 1)
 	           ship.positions = moveLeft

@@ -3,5 +3,44 @@
 	height: 50px;
 	background-color: #993a3a;
 	font-size: 20px;
-	font-family: Helvetica;
+	font-family: 'Share Tech Mono';
+}
+
+#makeShip {
+    font-family: 'Share Tech Mono';
+    font-size: 13px;
+}
+
+#boardSize {
+	font-family: 'Share Tech Mono';
+}
+
+#start {
+	font-family: 'Share Tech Mono';
+	font-size: 13px;
+}
+
+body {
+	font-family: 'Share Tech Mono', serif;
+	font-size: 20px;
+	background-color: #85a7db;
+
+}
+
+.background img {
+	position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0.2;
+    z-index: -1
+}
+
+.btn {
+   border: 1px outset blue;
+   background-color: lightBlue;
+   height:50px;
+   width:50px;
+   cursor:pointer;
 }

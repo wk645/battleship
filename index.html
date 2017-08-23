@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
 	<title>Battleship</title>
 	<script src="game.js"></script>
 	<script src="board.js"></script>
@@ -14,28 +15,32 @@
 </head>
 	<body>
 
+		<div class="background">
+			<img src="https://media.giphy.com/media/ki1rmMhjvLlm/giphy.gif">
+		</div>
+
 		<div id="intro">
-			<h1>Welcome to Battlefield!</h1>
+			<h1><center>Battlefield</center></h1>
 			<br>
-			<h2><u>How to Play:</u></h2>
-			<p>You have 10 turns to sink your opponent's ships. Click on a button to launch a torpedo. If the button turns red, you have hit one of their ships. If it turns grey, you have missed their ships.</p>
+			<h2><u>How to Play</u></h2>
+			<p>You have 10 turns to sink your opponent's ships. Click on a square on the targeting board to launch a torpedo. If the square turns red, you have hit one of their ships. If it turns grey, you have missed their ships.</p>
 			<br>
 
 
 		<form id="size"><center>
-		<p>Choose a number between 1-10 for the size of your battlefield:</p>
-			<input type="text" id="boardSize" placeholder="board size">
+		<p>Choose a number between 5-10 for the size of your battlefield:</p>
+			<input type="number" id="boardSize" placeholder="board size">
 		</center></form>
 			<br>
 			<center><button id="play">Set Up Board</button></center><br>
-		<form id="shipName"><center>
-			<input type="button" value="add ship" id="makeShip">
-		</center></form>
+		<center>
+			<button id="makeShip">Add Ship</button>
+		</center>
 		<br>
 		</div>
 		
 		<div id="board">
-			<center><p hidden>Targeting Board</p></center>
+			<center><p><u>Targeting Board</u></p></center>
 			<center><div id="targetBoard">
 			</center></div>
 			<br>
