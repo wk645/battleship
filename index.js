@@ -137,7 +137,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 
 	function renderShips () {
-		// debugger
 
 		Ship.all().forEach(function(ship) {
 			ship.positions.forEach(function(position) {
@@ -166,33 +165,58 @@ document.addEventListener("DOMContentLoaded", function() {
 		let priorPositions = ship.positions
 
 		// BOUNDARIES!!!!!!!!!!!!!!!!
-		// 
+
+		function isBiggerThanBoard(element, index, array) {
+			// debugger
+			return element > (input * input);
+		}
+
+		function isLessThanBoard(element, index, array) {
+			return element < 1;
+		}
 
 	    switch (e.keyCode) {
 	        case 37: // left
-	        
+
 	      	turnWhite(priorPositions)
-	          let moveLeft = ship.positions.map(position => position - 1)
-	           ship.positions = moveLeft
-	           renderShips()
+	      	// debugger
+	        let moveLeft = ship.positions.map(position => position - 1)
+	        if (moveLeft.some(isLessThanBoard)) {
+				ship.positions = priorPositions
+			} else {
+				ship.positions = moveLeft
+			}
+				renderShips()
 	            break;
 	        case 38: // up
 	  		turnWhite(priorPositions)
-	          let moveUp = ship.positions.map(position => position - parseInt(input))
-	           ship.positions = moveUp
-	           renderShips()
+	        let moveUp = ship.positions.map(position => position - parseInt(input))
+	        if (moveUp.some(isLessThanBoard)) {
+				ship.positions = priorPositions
+			} else {
+				ship.positions = moveUp
+			}
+				renderShips()
 	            break;
 	        case 39: // right
 	        turnWhite(priorPositions)
-	          let moveRight = ship.positions.map(position => position + 1)
-	           ship.positions = moveRight
-	           renderShips()
+	        let moveRight = ship.positions.map(position => position + 1)
+	        if (moveRight.some(isBiggerThanBoard)) {
+				ship.positions = priorPositions
+			} else {
+				ship.positions = moveRight
+			}
+				renderShips()
 	            break;
 	        case 40: // down
 	        turnWhite(priorPositions)
-	          let moveDown = ship.positions.map(position => position + parseInt(input))
-	           ship.positions = moveDown
-	           renderShips()
+	        let moveDown = ship.positions.map(position => position + parseInt(input))
+	        if (moveDown.some(isBiggerThanBoard)) {
+				ship.positions = priorPositions
+			} else {
+				ship.positions = moveDown
+			}
+				renderShips()
 	            break;
 	        case 13:
 	        	return null
@@ -226,6 +250,45 @@ const Ship = (function ShipClass(){
 
 
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
