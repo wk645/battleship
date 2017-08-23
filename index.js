@@ -49,6 +49,10 @@ document.addEventListener("DOMContentLoaded", function() {
 		event.preventDefault()
 
 		// game = new Game
+		let userBoard = document.getElementById("userBoard")
+		userBoard.removeEventListener("keydown", keyDown)
+
+		makeEnemyShip()
 		displayTargetingBoard()
 
 
@@ -65,7 +69,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	input = document.getElementById("boardSize").value
 	// RESTRICT numbers not btn 5-10!!!!!
 
-	// console.log(shipLocation)
 
 		// debugger
 
@@ -88,11 +91,48 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	}
 
+	// function coinToss() {
+
+	// 	let oneOrTwo = Math.floor(Math.random() * 2) + 1
+	// }
+
+	function makeEnemyShip() {
+
+	 	shipLocationOne = Math.floor(Math.random() * (input * input)) + 1
+	 	let shipLocationTwo
+
+	 	let shipOrientation = Math.floor(Math.random() * 2) + 1
+
+	 	if (shipOrientation === 1) {
+	 		// make horizontal ship
+	 		if (shipLocation % input === 0) {
+	 			// shipLocation, shipLocation - 1
+	 			shipLocationTwo = shipLocationOne - 1
+	 		} else {
+	 			shipLocationTwo = shipLocationOne + 1
+	 		} 
+
+	 	} else {
+	 		// make vertical ship
+	 		if ((shipLocation + input) > (input * input)) {
+	 			shipLocationTwo = shipLocationOne - input
+	 		} else {
+	 			shipLocationTwo = shipLocation + input
+	 		}
+	 	}
+
+	 	let positions = [shipLocationOne, shipLocationTwo]
+	 	ship = new EnemyShip(positions)
+
+	}
+
 	function displayTargetingBoard() {
 		const targetingBoard = []
 		// debugger
 	 input = parseInt(document.getElementById("boardSize").value)
+	 // debugger
 	 shipLocation = Math.floor(Math.random() * (input * input)) + 1  
+	 // enemy ship location (1 by 1)
 
 		for (i = 1; i <= (input * input); i++) {
 
@@ -113,6 +153,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	}
 
+	function enemyShipsLocations() {
+		// push all locations of all enemy ships into an array.
+		// pass it into hitOrMiss to check if the target(click) includes any location of the enemy
+
+
+	}
+
 	function hitOrMiss(shipLocation, destination) {
 
 		var property = event.target
@@ -123,8 +170,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 			if (currentLocation === destination) {
 
-				property.style.backgroundColor = "#ff0000"
-				alert("you sank one of its ships!")
+				property.style.backgroundColor = "#ff0000" 
+
+				// if (hits % health === 1) {	
+				// alert("you sank one of its ships!")
+				// }
 
 			} else {
 		
@@ -146,6 +196,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		})
 
+
 	}
 
 	function turnWhite(positions) {
@@ -155,12 +206,8 @@ document.addEventListener("DOMContentLoaded", function() {
 			})
 		}
 
+function keyDown(e) {
 
-	function moveShip(ship) {
-
-		let userBoard = document.getElementById("userBoard")
-
-		userBoard.onkeydown = function(e) {
 			e.preventDefault()
 		let priorPositions = ship.positions
 
@@ -177,7 +224,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	    switch (e.keyCode) {
 	        case 37: // left
-
 	      	turnWhite(priorPositions)
 	      	// debugger
 	        let moveLeft = ship.positions.map(position => position - 1)
@@ -223,7 +269,16 @@ document.addEventListener("DOMContentLoaded", function() {
 	        break;
 	   		}
 
+	   	// break
+
 		} 
+
+	function moveShip(ship) {
+
+
+		let userBoard = document.getElementById("userBoard")
+		userBoard.addEventListener("keydown", keyDown) 
+
 
 	}
 
@@ -236,7 +291,8 @@ const Ship = (function ShipClass(){
 		constructor(){
 			this.id = all.length + 1
 			this.positions = [1, (1+ parseInt(input))]
-			this.status = null
+			// this.health = health
+			// this.hits = hits
 			all.push(this)
 		}
 
@@ -246,6 +302,22 @@ const Ship = (function ShipClass(){
 	}
 })()
 
+const EnemyShip = (function EnemyShipClass(){
+	const all = []
+
+	return class EnemyShip {
+		constructor(positions){
+			this.id = all.length + 1
+			this.positions = positions
+			this.status = null
+			all.push(this)
+		}
+
+		static all() {
+			return all
+		}
+	}
+})()
 
 
 
