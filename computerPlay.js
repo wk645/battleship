@@ -50,17 +50,19 @@ function displayTargetingBoard() {
 
 }
 
+let previousGuesses = []
 function computerTurn() {
 
-	let previousGuesses = []
 	randomTarget = Math.floor(Math.random() * (input * input)) + 1
-
+	
+	debugger
 	if (previousGuesses.includes(randomTarget)) {
 		computerTurn()
 	} else {
 		computerHitOrMiss(randomTarget)
 	}
 	
+	previousGuesses.push(randomTarget)
 }
 
 let computerHitCounter = 0 
@@ -79,6 +81,7 @@ function computerHitOrMiss(target) {
 	}
 	if (computerHitCounter === 2) {
 
+		targetedButton.style.backgroundColor = "#ff0000"
 		alert("YOU LOST!")
 		
 		gameMaster(username, true)

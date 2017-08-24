@@ -28,20 +28,3 @@
  		}).join("")
 
  	}
-
- 	// make a new game object, game = new Game(username, outcome)
-
- 	const Game = (function createGameClass(){
-
-	return class Game {
-
-		constructor(username, outcome){
-			this.username = username
-			this.outcome = outcome
-		}
-		
-		// sends object
-
-}
-		console.log(game)
-})()

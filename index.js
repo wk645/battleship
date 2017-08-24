@@ -4,9 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	let input
 	let positions
 	let username 
-	// let myShips
 	let randomTarget = Math.floor(Math.random() * (input * input)) + 1
-
 	let myBoard = document.getElementById("userBoard")
 	let boardDiv = document.getElementById("board")
 	let playButton = document.getElementById("play")
