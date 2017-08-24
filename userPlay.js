@@ -45,7 +45,7 @@ function hitOrMiss(currentShipPosition) {
 		gameMaster(username, true)
 
 	} else {
-		computerTurn()
+		window.setTimeout(computerTurn, 2000)
 	}
 
 }

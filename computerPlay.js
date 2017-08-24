@@ -66,7 +66,7 @@ function computerTurn() {
 let computerHitCounter = 0 
 
 function computerHitOrMiss(target) {
-	debugger
+	// debugger
 
 	myShipPositions = Ship.all()[0].positions
 	let targetedButton = document.getElementById(`${target}`)
