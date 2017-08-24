@@ -27,12 +27,6 @@
  			return `${e}, ${outcome[i]}<br>`
  		}).join("")
 
- 	// 	var a = [1, 2, 3]
-		// var b = ['a', 'b', 'c']  
-
-		// var c = a.map(function (e, i) {
-		//     return [e, b[i]];
-		// });
  	}
 
  	// make a new game object, game = new Game(username, outcome)
