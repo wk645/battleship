@@ -3,6 +3,7 @@
 <head>
 	<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
 	<title>Battleship</title>
+	<script src="gameMaster.js"></script>
 	<script src="game.js"></script>
 	<script src="board.js"></script>
 	<script src="index.js"></script>
@@ -32,7 +33,7 @@
 		</center>
 
 		<form id="size"><center>
-		<p>Choose a number between 5-10 for the size of your battlefield:</p>
+		<p>Choose a number between 5-10 to choose the size of your battlefield:</p>
 			<input type="number" id="boardSize" placeholder="board size">
 		</center></form>
 			<br>
@@ -56,6 +57,11 @@
 			<center><button id="start">Save Locations and Start Game</button></center><br>
 
 		</div>
+
+		<center><h2><u>Score Board</u></h2>
+		<div id="score">
+
+		</div></center>
 	</body>
 
 

@@ -3,11 +3,13 @@ document.addEventListener("DOMContentLoaded", function() {
 	let shipLocation
 	let input
 	let positions
-
+	let username 
+	let randomTarget = Math.floor(Math.random() * (input * input)) + 1
 	// let myHeadline = document.getElementById("myBoardHeadline")
 	// myHeadline.style.display = "none"
 
 	let boardDiv = document.getElementById("board")
+	// let targetButtons = document.getElementsByClassName("btn")
 	//this is checking to see if any buttons on the board have been clicked and call hit or miss function
 	boardDiv.addEventListener("click", function(event) {
 
@@ -30,6 +32,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 	})
+
+	// username = document.getElementById("username").value
 
 	// this button is connected to the user input of the ship name
 	// clicking the add ship button should create a new ship object with the name from the user, a default position, and a status of null
@@ -118,9 +122,9 @@ document.addEventListener("DOMContentLoaded", function() {
 	 	} else {
 	 		// make vertical ship
 	 		if ((shipLocationOne + input) > (input * input)) {
-	 			shipLocationTwo = shipLocationOne - input
+	 			shipLocationTwo = (shipLocationOne - input)
 	 		} else {
-	 			shipLocationTwo = shipLocation + input
+	 			shipLocationTwo = (shipLocationOne + input)
 	 		}
 	 	}
 
@@ -136,7 +140,8 @@ document.addEventListener("DOMContentLoaded", function() {
 	 input = parseInt(document.getElementById("boardSize").value)
 
 	 // debugger
-	 shipLocation = Math.floor(Math.random() * (input * input)) + 1
+	 randomTarget = shipLocation
+	 
 	 // enemy ship location (1 by 1)
 
 		for (i = 1; i <= (input * input); i++) {
@@ -158,63 +163,39 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	}
 
-	function enemyShipsLocations() {
-		// push all locations of all enemy ships into an array.
-		// pass it into hitOrMiss to check if the target(click) includes any location of the enemy
-
-
-	}
+	
 
 	let hitCounter = 0
+
+	// off the grid SOMETIMES
+
 	function hitOrMiss(currentShipPosition) {
+		// debugger
 		var property = event.target
 		let string = event.target.id
+		username = document.getElementById("username").value
+
 		string = parseInt(string.slice(15))
+
 		if (positions.includes(string)){
 			property.style.backgroundColor = "#ff0000"
 			hitCounter ++
-			debugger
 		} else {
 			property.style.backgroundColor = "#636e7f"
 		}
 		if (hitCounter === 2) {
-			displayModal()
+			// displayModal()
+			alert("YOU WON!")
+			// debugger
+			gameMaster(username, true)
+
 		}
- }
 
-function displayModal() {
-	// var modal = document.getElementById('myModal');
-	// var span = document.getElementsByClassName("close")[0];
-	// span.onclick = function() {
-  //   modal.style.display = "none";
-}
+		// set timer for computer turn
+		// invoke function for randomized computer attack
+ 	}
 
 
-
-
-
-		//
-		// var property = event.target
-		//
-		// let currentLocation = `targetingBoard-${shipLocation}`
-		//
-		// if (event.target.type === "button") {
-		//
-		// 	if (currentLocation === destination) {
-		//
-		// 		property.style.backgroundColor = "#ff0000"
-		//
-		// 		// if (hits % health === 1) {
-		// 		// alert("you sank one of its ships!")
-		// 		// }
-		//
-		// 	} else {
-		//
-		// 	property.style.backgroundColor = "#636e7f"
-		//
-		// 	}
-		//
-		// }
 
 
 
@@ -326,6 +307,16 @@ function keyDown(e) {
 	// 	}
 	// }
 
+// function computerTurn() {
+// 	let previousGuesses = []
+// 	if previousGuesses.includes(randomTarget) {
+// 		computerTurn()
+// 	} else {
+// 		computerHitOrMiss()
+// 	}
+	
+
+// }
 
 
 const Ship = (function ShipClass(){
