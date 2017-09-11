@@ -3,8 +3,12 @@ function displayUserBoard() {
 	const userBoard = []
 
 	input = document.getElementById("boardSize").value
-	
 
+	if (input < 5 || input > 10) {
+		alert("Type a number between 5 and 10!")
+		return false
+	} 
+	
 		for (i = 1; i <= (input * input); i++) {
 
 			if (i % input === 0) {
@@ -42,6 +46,7 @@ function hitOrMiss(currentShipPosition) {
 	}
 	if (hitCounter === 2) {
 		alert("YOU WON!")
+		
 		gameMaster(username, true)
 
 	} else {

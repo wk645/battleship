@@ -28,3 +28,17 @@
  		}).join("")
 
  	}
+
+// <center><table>
+//   <tr>
+//     <th>Score Board</th>
+//   </tr>
+//   <tr>
+//     <td>Username 1</td>
+//     <td>Outcome t/f</td>
+//   </tr>
+//   <tr>
+//     <td>Username 2</td>
+//     <td>Outcome t/f</td>
+//   </tr>
+// </table></center>

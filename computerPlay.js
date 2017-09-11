@@ -84,7 +84,7 @@ function computerHitOrMiss(target) {
 		targetedButton.style.backgroundColor = "#ff0000"
 		alert("YOU LOST!")
 		
-		gameMaster(username, true)
+		gameMaster(username, false)
 
 	}
 	
